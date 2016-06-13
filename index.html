@@ -23,11 +23,10 @@
 				z-index: 0;
 				background-color: #000;
 			}
-			#background img {
+			#background div {
 				position: absolute;
 				top: 0;
 				left: 0;
-				object-fit: cover;
 			}
 			.overlay {
 				position: absolute;
@@ -105,10 +104,12 @@
 			var fadeAmount = 0.2;
 
 			for (var i=0; i<11; i++) {
-				var el = document.createElement("img");
-				el.src = "backgrounds/" + i + ".jpg";
-				el.style.width = 1920;
-				el.style.height = 1080;
+				var el = document.createElement("div");
+				el.style["background-image"] = "url(backgrounds/" + i + ".jpg)";
+				el.style["background-size"] = "cover";
+				el.style["background-position"] = "center";
+				el.style["width"] = "100%";
+				el.style["height"] = "100%";
 				document.getElementById("background").appendChild(el);
 			}
 
@@ -138,7 +139,7 @@
 				  loop: true,
 				  volume: 0.35
 				}).play();
-				var images = shuffle($("#background img"));
+				var images = shuffle($("#background div"));
 				var numImages = images.size();
 				var durationMs = duration * 1000;
 				var imageTime = durationMs / numImages; // time the image is visible 

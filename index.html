@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WeebCTF</title>
+		<style>
+			@font-face {
+				font-family: "Rako";
+				src: url(rako.ttf) format("truetype");
+			}
+			* {
+				font-family: "Rako";
+			}
+			*::selection, *::-webkit-selection {
+				background-color: #BF096D;
+				color: #FFF;
+			}
+			#background {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+				background-color: #000;
+			}
+			#background img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 1920px;
+				height: 1080px;
+			}
+			.overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
+				background: -moz-radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
+				background: -webkit-radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
+				z-index: 50;
+			}
+			.overlay > #panel {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				text-align: center;
+				transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				color: #FFF;
+			}
+			#panel > #title {
+				font-size: 7.5em;
+				margin-bottom: 0;
+			}
+			#panel > #subtitle {
+				font-size: 2.5em;
+				margin-top: 0;
+				margin-bottom: 2.5em;
+			}
+			#panel > #email {
+				padding: 15px 30px;
+				font-size: 1.5em;
+				outline: none;
+				border: none;
+				border-radius: 100px;
+			}
+		</style>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
+		<script src="https://cdn.rawgit.com/goldfire/howler.js/master/howler.min.js" integrity="sha384-beI4ZBBvQE9FLKZgUFfvBvGf/xo5mUeiaTA9kjkKXn2QN5Ybf+EiwCSxnSpLk/Wg" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div id="background">
+		</div>
+		<div class="overlay">
+			<div id="panel">
+				<h1 id="title">&#x30A6;&#x30A3;&#x30FC;&#x30D6;CTF</h1>
+				<h2 id="subtitle">WeebCTF</h2>
+				<input type="text" id="email" placeholder="Subscribe to updates" autocomplete="off" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			var duration = 80;
+			var fadeAmount = 0.2;
+
+			for (var i=0; i<11; i++) {
+				var el = document.createElement("img");
+				el.src = "backgrounds/" + i + ".jpg";
+				el.style.width = 1920;
+				el.style.height = 1080;
+				document.getElementById("background").appendChild(el);
+			}
+
+			function shuffle(array) {
+				var currentIndex = array.length,
+					temporaryValue, randomIndex;
+
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
+
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// And swap it with the current element.
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+			}
+
+			$(document).ready(function() {
+				var sound = new Howl({
+				  urls: ['bgm.mp3'],
+				  loop: true,
+				  volume: 0.35
+				}).play();
+				var images = shuffle($("#background img"));
+				var numImages = images.size();
+				var durationMs = duration * 1000;
+				var imageTime = durationMs / numImages; // time the image is visible 
+				var fadeTime = imageTime * fadeAmount; // time for cross fading
+				var visibleTime = imageTime - (imageTime * fadeAmount * 2); // time the image is visible with opacity == 1
+				var animDelay = visibleTime * (numImages - 1) + fadeTime * (numImages - 2); // animation delay/offset for a single image 
+
+				images.each(function(index, element) {
+					if (index != 0) {
+						$(element).css("opacity", "0");
+						setTimeout(function() {
+							doAnimationLoop(element, fadeTime, visibleTime, fadeTime, animDelay);
+						}, visibleTime * index + fadeTime * (index - 1));
+					} else {
+						setTimeout(function() {
+							$(element).animate({
+								opacity: 0
+							}, fadeTime, function() {
+								setTimeout(function() {
+									doAnimationLoop(element, fadeTime, visibleTime, fadeTime, animDelay);
+								}, animDelay)
+							});
+						}, visibleTime);
+					}
+				});
+			});
+
+			// creates a animation loop
+			function doAnimationLoop(element, fadeInTime, visibleTime, fadeOutTime, pauseTime) {
+				fadeInOut(element, fadeInTime, visibleTime, fadeOutTime, function() {
+					setTimeout(function() {
+						doAnimationLoop(element, fadeInTime, visibleTime, fadeOutTime, pauseTime);
+					}, pauseTime);
+				});
+			}
+
+			// shorthand for in- and out-fading
+			function fadeInOut(element, fadeIn, visible, fadeOut, onComplete) {
+				return $(element).animate({
+					opacity: 1
+				}, fadeIn).delay(visible).animate({
+					opacity: 0
+				}, fadeOut, onComplete);
+			}
+		</script>
+	</body>
+</html>

@@ -133,12 +133,16 @@
 				</div>
 			</div>
 			<div id="info" class="container">
-				<h1>What is &#x30A6;&#x30A3;&#x30FC;&#x30D6;CTF (WeebCTF)?</h1>
-				<p>weebctf is a <a href="https://ctftime.org/ctf-wtf/" target="_blank">ctf</a> for weebs.</p>
-				<h1>Who are we?</h1>
-				<p>a bunch of weebs.</p>
-				<p>&nbsp;</p>
 				<center>
+					<h1>What is &#x30A6;&#x30A3;&#x30FC;&#x30D6;CTF (WeebCTF)?</h1>
+					<p>weebctf is a <a href="https://ctftime.org/ctf-wtf/" target="_blank">ctf</a> for weebs.</p>
+					<h1>Who are we?</h1>
+					<p>a bunch of weebs.</p>
+					<div class="row">
+						<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="team">
+						</div>
+					</div>
+					<p>&nbsp;</p>
 					<p>&copy; 2016</p>
 				</center>
 			</div>
@@ -158,11 +162,11 @@
 				document.getElementById("background").appendChild(el);
 			}
 
-			$('#mc-embedded-subscribe-form').submit(function(e) {
-				e.preventDefault(); // don't submit multiple times
-				this.submit(); // use the native submit method of the form element
-				$('#mce-EMAIL').val(''); // blank the input
-			});
+			var people = [ "mzhang", "maki-chan", "defund" ];
+
+			for (var i=0; i<people.length; i++) {
+				$("#team").append("<div class='col-xs-6 col-md-4' style='box-sizing:border-box;-moz-box-sizing:border-box;padding:2em;'><img style='width:100%;border-radius:100%;' src='team/" + people[i] + ".jpg'><p>" + people[i] + "</p></div>");
+			}
 
 			function shuffle(array) {
 				var currentIndex = array.length,

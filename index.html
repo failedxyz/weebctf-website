@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>WeebCTF</title>
+		<link rel="stylesheet" href="bootstrap-container.min.css" />
 		<style>
 			@font-face {
 				font-family: "Rako";
@@ -13,6 +14,9 @@
 			*::selection, *::-webkit-selection {
 				background-color: #BF096D;
 				color: #FFF;
+			}
+			body {
+				font-size: 2.5em;
 			}
 			#background {
 				position: fixed;
@@ -28,16 +32,38 @@
 				top: 0;
 				left: 0;
 			}
-			.overlay {
+			#whot {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: radial-gradient(circle, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.9));
+				background: -moz-radial-gradient(circle, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.9));
+				background: -webkit-radial-gradient(circle, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.9));
+			}
+			#container {
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background: radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
-				background: -moz-radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
-				background: -webkit-radial-gradient(circle, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75));
 				z-index: 50;
+				padding: 0;
+			}
+			#info {
+				position: relative;
+				color: #FFF;
+			}
+			#info a {
+				color: #9CF;
+			}
+			.overlay {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
 			}
 			.overlay > #panel {
 				position: absolute;
@@ -50,20 +76,21 @@
 				color: #FFF;
 			}
 			#panel > #title {
-				font-size: 7.5em;
+				font-size: 5em;
 				margin-bottom: 0;
 			}
 			#panel > #subtitle {
-				font-size: 2.5em;
+				font-size: 1em;
 				margin-top: 0;
-				margin-bottom: 2.5em;
+				margin-bottom: 1em;
 			}
 			#panel #mce-EMAIL {
 				padding: 15px 30px;
-				font-size: 1.5em;
+				font-size: 1em;
 				outline: none;
 				border: none;
 				border-radius: 100px;
+				color: #000;
 			}
 		</style>
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
@@ -72,31 +99,46 @@
 	<body>
 		<div id="background">
 		</div>
-		<div class="overlay">
-			<div id="panel">
-				<h1 id="title">&#x30A6;&#x30A3;&#x30FC;&#x30D6;CTF</h1>
-				<h2 id="subtitle">
-					WeebCTF
-					<br />
-					July 22-25
-				</h2>
-				<!-- Begin MailChimp Signup Form -->
-				<div id="mc_embed_signup">
-					<form action="//easyctf.us13.list-manage.com/subscribe/post?u=bf78d5776f261f10da4462210&amp;id=c9492650af" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate onsubmit="javascript:document.getElementById('mce-EMAIL').value='';">
-						<div id="mc_embed_signup_scroll">
-							<div class="mc-field-group">
-								<input type="email" value="" name="EMAIL" class="required email" placeholder="Subscribe" id="mce-EMAIL" autocomplete="off">
+		<div id="whot">
+		</div>
+		<div id="container">
+			<div class="overlay">
+				<div id="panel">
+					<h1 id="title">&#x30A6;&#x30A3;&#x30FC;&#x30D6;CTF</h1>
+					<h2 id="subtitle">
+						WeebCTF
+						<br />
+						July 22-25
+					</h2>
+					<!-- Begin MailChimp Signup Form -->
+					<div id="mc_embed_signup">
+						<form action="//easyctf.us13.list-manage.com/subscribe/post?u=bf78d5776f261f10da4462210&amp;id=c9492650af" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate onsubmit="javascript:document.getElementById('mce-EMAIL').value='';">
+							<div id="mc_embed_signup_scroll">
+								<div class="mc-field-group">
+									<input type="email" value="" name="EMAIL" class="required email" placeholder="Subscribe" id="mce-EMAIL" autocomplete="off">
+								</div>
+								<div id="mce-responses" class="clear">
+									<div class="response" id="mce-error-response" style="display:none"></div>
+									<div class="response" id="mce-success-response" style="display:none"></div>
+								</div>
+								<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+								<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bf78d5776f261f10da4462210_c9492650af" tabindex="-1" value=""></div>
+								<div class="clear"><input style="position: absolute; left: -5000px;" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
 							</div>
-							<div id="mce-responses" class="clear">
-								<div class="response" id="mce-error-response" style="display:none"></div>
-								<div class="response" id="mce-success-response" style="display:none"></div>
-							</div>
-							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-							<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bf78d5776f261f10da4462210_c9492650af" tabindex="-1" value=""></div>
-							<div class="clear"><input style="position: absolute; left: -5000px;" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-						</div>
-					</form>
+						</form>
+					</div>
+					<p>scroll down for info</p>
 				</div>
+			</div>
+			<div id="info" class="container">
+				<h1>What is &#x30A6;&#x30A3;&#x30FC;&#x30D6;CTF (WeebCTF)?</h1>
+				<p>weebctf is a <a href="https://ctftime.org/ctf-wtf/" target="_blank">ctf</a> for weebs.</p>
+				<h1>Who are we?</h1>
+				<p>a bunch of weebs.</p>
+				<p>&nbsp;</p>
+				<center>
+					<p>&copy; 2016</p>
+				</center>
 			</div>
 		</div>
 		<script type="text/javascript">

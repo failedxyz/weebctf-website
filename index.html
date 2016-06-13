@@ -100,10 +100,11 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			var duration = 80;
-			var fadeAmount = 0.2;
+			var num_images = 22;
+			var duration = num_images * 5;
+			var fadeAmount = 0.18;
 
-			for (var i=0; i<22; i++) {
+			for (var i=0; i<num_images; i++) {
 				var el = document.createElement("div");
 				el.style["background-image"] = "url(backgrounds/" + i + ".jpg)";
 				el.style["background-size"] = "cover";

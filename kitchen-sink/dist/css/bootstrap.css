@@ -6063,3 +6063,6 @@ input.form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+code {
+  white-space: default;
+}

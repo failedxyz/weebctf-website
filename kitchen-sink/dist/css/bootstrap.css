@@ -6064,5 +6064,5 @@ input.form-control:focus {
   box-shadow: none;
 }
 code {
-  white-space: default;
+  white-space: normal!important;
 }

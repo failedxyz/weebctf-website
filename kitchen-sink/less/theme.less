@@ -1,0 +1,79 @@
+/*!
+ * Your Theme Name v0.1.0
+ *
+ * Copyright 2013 Your Name
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * This theme was built using the Themestrap Bootstrap Theme Kit.
+ * https://github.com/divshot/themestrap
+ */
+
+@import "bootstrap.less";
+
+@font-face {
+	font-family: "Rako";
+	src: url("https://cdn.rawgit.com/failedxyz/weebctf-website/gh-pages/rako.ttf") format("truetype");
+}
+
+*::selection {
+	background-color: @brand-primary;
+	color: #fff;
+}
+
+body {
+	background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAoACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2YnHyr1/lRwg9Sf1o4QepP60AY+Zuv8q8v+vU9AAMfM3X+VAG45PTsKANxyenYUE7jgdO5o/r0ACdxwOnc0UE4+Vev8qKabWzsAAY+Zuv8qANxyenYUAbjk9OwoJ3HA6dzS/r0ACdxwOnc0E4+Vev8qCcfKvX+VHCD1J/WgA4QepP60UAY+Zuv8qKPlcAJ3HA6dzQTj5V6/yooptWbXYA4QepP60AY+Zuv8qKKXbzAANxyenYUUUVLbuB/9k=');
+}
+
+.navbar, .panel, .jumbotron {
+	// .box-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.btn {
+	.box-sizing(border-box);
+	border: none;
+	// border: 3px solid #fff;
+}
+
+.btn-color(@color) {
+	background-color: @color;
+	.transition(.2 ease-out all);
+	@shadow: 0 @shadow-height darken(@color, 15%), 0 @shadow-height @shadow-height rgba(0, 0, 0, 0.8);
+	.box-shadow(none);
+	// background-image: url(/images/triangles.png);
+	background-position: center;
+	background-size: cover;
+	
+	&:hover {
+		background-color: lighten(@color, 10%);
+		// border: 3px solid #fff;
+	}
+	
+	&:active, &:focus, &.active {
+		background-color: darken(@color, 5%);
+		@shadow: 0 @shadow-height/2 darken(@color, 15%), 0 @shadow-height/2 @shadow-height/2 rgba(0, 0, 0, 0.8);
+		.box-shadow(none);
+		// border: 3px solid #fff;
+	}
+}
+
+.btn-primary {
+	.btn-color(@brand-primary);
+}
+.btn-success {
+	.btn-color(@brand-success);
+}
+.btn-danger {
+	.btn-color(@brand-danger);
+}
+.btn-info {
+	.btn-color(@brand-info);
+}
+.btn-warning {
+	.btn-color(@brand-warning);
+}
+.btn-default {
+	.btn-color(@gray);
+}
+
+// Add CSS Customizations to your theme here.

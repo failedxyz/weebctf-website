@@ -5942,7 +5942,6 @@ input.form-control:focus {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  border: none;
 }
 .btn-primary {
   background-color: #ef2289;
@@ -5952,6 +5951,7 @@ input.form-control:focus {
   box-shadow: none;
   background-position: center;
   background-size: cover;
+  border: 1px solid #ef2289;
 }
 .btn-primary:hover {
   background-color: #f252a2;
@@ -5971,6 +5971,7 @@ input.form-control:focus {
   box-shadow: none;
   background-position: center;
   background-size: cover;
+  border: 1px solid #ba9add;
 }
 .btn-success:hover {
   background-color: #d4c0ea;
@@ -5990,6 +5991,7 @@ input.form-control:focus {
   box-shadow: none;
   background-position: center;
   background-size: cover;
+  border: 1px solid #ff8866;
 }
 .btn-danger:hover {
   background-color: #ffb099;
@@ -6009,6 +6011,7 @@ input.form-control:focus {
   box-shadow: none;
   background-position: center;
   background-size: cover;
+  border: 1px solid #54ccff;
 }
 .btn-info:hover {
   background-color: #87dbff;
@@ -6028,6 +6031,7 @@ input.form-control:focus {
   box-shadow: none;
   background-position: center;
   background-size: cover;
+  border: 1px solid #ffbb00;
 }
 .btn-warning:hover {
   background-color: #ffc933;
@@ -6047,6 +6051,7 @@ input.form-control:focus {
   box-shadow: none;
   background-position: center;
   background-size: cover;
+  border: 1px solid #00db6d;
 }
 .btn-default:hover {
   background-color: #0fff87;

@@ -144,14 +144,14 @@
 // -------------------------
 
 @input-bg:                       #fff;
-@input-bg-disabled:              @gray-lighter;
+@input-bg-disabled:              lighten(@brand-primary, 15%);
 
-@input-color:                    @gray-darker;
+@input-color:                    @brand-primary;
 @input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
 @input-border-focus:             lighten(@brand-primary, 15%);
 
-@input-color-placeholder:        @gray;
+@input-color-placeholder:        lighten(@brand-primary, 15%);
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
